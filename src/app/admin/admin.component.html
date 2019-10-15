@@ -1,0 +1,31 @@
+<div class="wrapper">
+    <div class="page-header" style="background-image: url('../assets/img/tower.jpg');">
+        <ng-template #alertTemplate let-c="close" let-d="dismiss">
+            <div class="modal-body">
+                <p>Invalid credentials!</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" (click)="c('Close click')">OK</button>
+            </div>
+        </ng-template>
+        <!--<div class="filter"></div>-->
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-sm-6 mr-auto ml-auto">
+                        <div class="card card-register">
+                            <h3 class="title">Hi Commander!</h3>
+                            <form class="register-form">
+                                <label>Username</label>
+                                <input type="text" class="form-control" [(ngModel)]="user" [ngModelOptions]="{standalone: true}" placeholder="Username">
+
+                                <label>Password</label>
+                                <input type="password" class="form-control" [(ngModel)]="pass" [ngModelOptions]="{standalone: true}" placeholder="Password" >
+
+                                <button class="btn btn-block btn-round" (click)="login()">Login</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>

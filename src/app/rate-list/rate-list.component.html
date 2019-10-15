@@ -1,0 +1,76 @@
+<div class="wrapper">
+    <div class="page-header page-header-xs" data-parallax="true" style="background-image: url('../assets/img/header.jpg');">
+        <div class="filter"></div>
+    </div>
+
+    <ng-template #dialog let-c="close" let-d="dismiss">
+        <div class="modal-body">
+            <p>Are you sure you want to delete selected rate?</p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-light" (click)="delete()">Confirm</button>
+            <button type="button" class="btn btn-light" (click)="c('Close click')">Cancel</button>
+        </div>
+    </ng-template>
+    <ng-template #alertTemplate let-c="close" let-d="dismiss">
+        <div class="modal-body">
+            <p>{{alertMessage}}</p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-light" (click)="c('Close click')">OK</button>
+        </div>
+    </ng-template>
+    <div class="section-gray text-center listdiv">
+        <div class="container">
+            <button md-icon-button (click)="edit(null)">ADD NEW RATE</button>
+
+            <ngx-datatable
+                    class="bootstrap"
+                    [rows]="rows | async"
+                    [loadingIndicator]="loadingIndicator"
+                    [columns]="columns"
+                    [columnMode]="'force'"
+                    [limit]="10"
+                    [rowHeight]="'auto'"
+                    [headerHeight]="40"
+                    [footerHeight]="40"
+                    [reorderable]="reorderable">
+            </ngx-datatable>
+            <ng-template #actionsTemplate class="row-actions" let-row="row" let-value="value">
+                <button md-icon-button (click)="edit(row)">
+                    <i class="fa fa-edit"></i>
+                </button>
+                <button md-icon-button (click)="confirmDelete(row, dialog)">
+                    <i class="fa fa-trash"></i>
+                </button>
+            </ng-template>
+
+        </div>
+    </div>
+
+    <div class="section-dark-blue editdiv collapse-div">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-sm-6 mr-auto ml-auto">
+                    <h3 class="title">Rate Entry:</h3>
+
+                    <label>Description</label>
+                    <input type="text" class="form-control" [(ngModel)]="desc" placeholder="Description">
+
+                    <label>Rate</label>
+                    <input type="text" class="form-control" [(ngModel)]="rate" placeholder="Rate">
+
+                    <label>Package</label>
+                    <input type="text" class="form-control" [(ngModel)]="package" placeholder="Package">
+
+                    <label>Add-on</label>
+                    <input type="text" class="form-control" [(ngModel)]="addon" placeholder="Add-on">
+
+                    <button class="btn-block " (click)="save()">SAVE</button>
+                    <button class="btn-block" (click)="cancel()">CANCEL</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

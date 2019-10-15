@@ -1,0 +1,24 @@
+<div class="wrapper">
+    <div class="page-header page-header-xs" data-parallax="true" style="background-image: url('../assets/img/header.jpg');">
+        <div class="filter"></div>
+    </div>
+    <div class="section text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 mr-auto ml-auto section-dark-blue">
+                    <h2 class="title">Rates</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6" *ngFor="let rate of rates | async">
+                    <div class="section-nude">
+                        <h2 class="title">{{rate.description}}</h2>
+                        <h4>{{rate.package}}</h4>
+                        <h5 class="description">{{rate.rate}}</h5>
+                        <h5 class="description" *ngIf="rate.addon != ''">Add-on: {{rate.addon}}</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

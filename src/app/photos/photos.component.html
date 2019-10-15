@@ -1,0 +1,56 @@
+<div class="wrapper">
+    <div class="page-header page-header-xs" data-parallax="true" style="background-image: url('../assets/img/header.jpg');">
+        <div class="filter"></div>
+    </div>
+
+    <ng-template #dialog let-c="close" let-d="dismiss">
+        <img src="{{apiURL}}{{selectedPhoto}}" alt="" class="img-rounded img-responsive img-margin">
+    </ng-template>
+
+    <div class="section profile-content">
+        <div class="container">
+            <div class="nav-tabs-navigation">
+                <div class="nav-tabs-wrapper">
+                    <ngb-tabset [justify]="'center'">
+                        <ngb-tab title="Events">
+                            <ng-template ngbTabContent >
+                                <div class="row">
+                                    <div class="col-md-4" *ngFor="let photo of eventPhotos | async">
+                                        <img src="{{apiURL}}{{photo.photo}}" alt="{{photo.title}}" (click)="showPhoto(photo.photo, dialog)" class="img-rounded img-responsive img-margin">
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </ngb-tab>
+                        <ngb-tab title="Food">
+                            <ng-template ngbTabContent >
+                                <div class="row">
+                                    <div class="col-md-4" *ngFor="let photo of foodPhotos | async">
+                                        <img src="{{apiURL}}{{photo.photo}}" alt="{{photo.title}}" (click)="showPhoto(photo.photo, dialog)" class="img-rounded img-responsive img-margin">
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </ngb-tab>
+                        <ngb-tab title="Product Shoot">
+                            <ng-template ngbTabContent >
+                                <div class="row">
+                                    <div class="col-md-4" *ngFor="let photo of productPhotos | async">
+                                        <img src="{{apiURL}}{{photo.photo}}" alt="{{photo.title}}" (click)="showPhoto(photo.photo, dialog)" class="img-rounded img-responsive img-margin">
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </ngb-tab>
+                        <ngb-tab title="Travel">
+                            <ng-template ngbTabContent >
+                                <div class="row">
+                                    <div class="col-md-4" *ngFor="let photo of travelPhotos | async">
+                                        <img src="{{apiURL}}{{photo.photo}}" alt="{{photo.title}}" (click)="showPhoto(photo.photo, dialog)" class="img-rounded img-responsive img-margin">
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </ngb-tab>
+                    </ngb-tabset>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

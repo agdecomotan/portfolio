@@ -1,0 +1,46 @@
+<div class="wrapper">
+    <div class="page-header page-header-xs" data-parallax="true" style="background-image: url('../assets/img/header.jpg');">
+        <div class="filter"></div>
+    </div>
+
+    <ng-template #dialog let-c="close" let-d="dismiss">
+        <img src="{{apiURL}}{{selectedPhoto}}" alt="" class="img-rounded img-responsive img-margin">
+    </ng-template>
+
+    <div class="section profile-content">
+        <div class="container">
+            <div class="nav-tabs-navigation">
+                <div class="nav-tabs-wrapper">
+                    <ngb-tabset [justify]="'center'">
+                        <ngb-tab title="Invites">
+                            <ng-template ngbTabContent >
+                                <div class="row">
+                                    <div class="col-md-4" *ngFor="let photo of invitePhotos | async">
+                                        <div class="card">
+                                            <img src="{{apiURL}}{{photo.photo}}" alt="{{photo.title}}" (click)="showPhoto(photo.photo, dialog)" class="img-rounded img-responsive img-margin">
+                                            <h5>{{photo.title}}</h5>
+                                            <h6>{{photo.description}}</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </ngb-tab>
+                        <ngb-tab title="Graphics">
+                            <ng-template ngbTabContent >
+                                <div class="row">
+                                    <div class="col-md-4" *ngFor="let photo of graphicsPhotos | async">
+                                        <div class="card">
+                                            <img src="{{apiURL}}{{photo.photo}}" alt="{{photo.title}}" (click)="showPhoto(photo.photo, dialog)" class="img-rounded img-responsive img-margin">
+                                            <h5>{{photo.title}}</h5>
+                                            <h6>{{photo.description}}</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </ngb-tab>
+                    </ngb-tabset>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
